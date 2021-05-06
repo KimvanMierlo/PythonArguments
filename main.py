@@ -4,14 +4,22 @@ __human_name__ = 'arguments'
 
 # Add your code after this line
 
+planet_gravity = {
+	'sun' : 274,
+	'jupiter' : 24.9,
+	'neptune' : 11.2,
+	'saturn' : 10.4,
+	'earth' : 9.8,
+	'uranus' : 8.9,
+	'venus' : 8.9,
+	'mars' : 3.7,
+	'mercury' : 3.7,
+	'moon' : 1.6,
+	'pluto' : 0.6
+}
 
 def greet(name, template='Hello, <name>!'):
-	template_list = template.split("<name>")
-	template_list.insert(1, name)
-	result = ''
-	for part in template_list:
-		result += part
-	return result
+	return template.replace("<name>", name)
 
 
 print(greet("Mark"))
@@ -19,34 +27,7 @@ print(greet('Mark', 'Hello my name is <name>.'))
 
 
 def force(mass, body='earth'):
-
-	if body == 'sun':
-		gravity = 274
-	elif body == 'fupiter':
-		gravity = 24.9
-	elif body == 'neptune':
-		gravity = 11.2
-	elif body == 'saturn':
-		gravity = 10.4
-	elif body == 'earth':
-		gravity = 9.8
-	elif body == 'uranus':
-		gravity = 8.9
-	elif body == 'venus':
-		gravity = 8.9
-	elif body == 'mars':
-		gravity = 3.7
-	elif body == 'mercury': 
-		gravity = 3.7
-	elif body == 'moon':
-		gravity = 1.6
-	elif body == 'pluto':
-		gravity = 0.6
-	else:
-		gravity = 0
-		print ('Error: unknown body')
-
-	return mass * gravity
+	return mass * planet_gravity[body]
 
 print(force(3, 'sun'))
 
